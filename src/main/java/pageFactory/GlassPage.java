@@ -29,8 +29,14 @@ public class GlassPage extends BasePage{
             List<String> rowList = new ArrayList<>();
             for (WebElement cell : cells) {
                 String text = cell.getText();
+                if(text == null){
+                    rowList.add(" ");
+                }else if(text.contains("\n")){
+                    rowList.add(text.replaceAll("\n", " "));
+                }else{
+                    rowList.add(text);
+                }
 
-                rowList.add(text);
             }
             table.add(rowList);
         }

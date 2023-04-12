@@ -1,6 +1,11 @@
+import com.codeborne.selenide.commands.Val;
 import com.codeborne.selenide.impl.WebElementSelector;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageFactory.DashboardPage;
@@ -10,6 +15,8 @@ import pageFactory.Util;
 
 import java.net.MalformedURLException;
 import java.sql.Driver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GlassWorkflowTest {
     static GlassPage glassPage;
@@ -27,12 +34,26 @@ public class GlassWorkflowTest {
         loginPage.navigate("https://jira-expert.codecool.metastage.net/projects/BET?selectedItem=com.metainf.jira.plugin:glass-project-documentation#/home/issueTypes/10004/transitions");
     }
 
-    @Test
-    public void printTable(){
+    @ParameterizedTest
+    @CsvFileSource(resources = "/tableData.csv")
+    public void tableValidation(int index, String FromStatus, String TransitionName, String ToStatus, String TransitionType, String TransitionScreen, String Conditions, String Validators, String PostFunctions){
         glassPage.clickSkipButton();
+
+        System.out.println(index);
         System.out.println(glassPage.returnTable());
-        System.out.println(glassPage.returnTable().size());
+        Assertions.assertEquals(FromStatus, glassPage.returnTable().get(index).get(0));
+        Assertions.assertEquals(TransitionName, glassPage.returnTable().get(index).get(1));
+        Assertions.assertEquals(ToStatus, glassPage.returnTable().get(index).get(2));
+        Assertions.assertEquals(TransitionType, glassPage.returnTable().get(index).get(3));
+        Assertions.assertEquals(TransitionScreen, glassPage.returnTable().get(index).get(4));
+        Assertions.assertEquals(Conditions, glassPage.returnTable().get(index).get(5));
+        Assertions.assertEquals(Validators, glassPage.returnTable().get(index).get(6));
+        Assertions.assertEquals(PostFunctions, glassPage.returnTable().get(index).get(7));
     }
 
-
+    @AfterEach
+    public void tearDown() {
+        loginPage.quit();
+    }
 }
+

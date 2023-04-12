@@ -1,0 +1,6 @@
+0, "", Create, BASE, Initial, BET: Software Development Bug Screen1 TAB, "", 1, Default 3
+1, BASE, test1, ACCEPTED, Reused, "", 2, 1, Default 5
+2, ACCEPTED, test2, APPROVED, Unique, BAS: Software Development Bug Screen1 TAB, 1, 1, Default 5
+3, APPROVED, test3, BEAR, Reused, "", 1, 3, Default 5
+4, ACCEPTED, test4, CAB REVIEW, Unique, "", "", 1, Default 5
+5, BEAR CAB REVIEW, test5, ALMA, Reused, "", 2, 2, Default 5

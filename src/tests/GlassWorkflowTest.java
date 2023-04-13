@@ -30,7 +30,7 @@ public class GlassWorkflowTest {
         loginPage = new LoginPage();
         loginPage.navigateToDashboardLoginPage();
         loginPage.loggingIn(Util.VALID_USERNAME, Util.VALID_PASSWORD);
-        Thread.sleep(2000);
+        dashboardPage.waitToPresentProfileBtn();
         loginPage.navigate("https://jira-expert.codecool.metastage.net/projects/BET?selectedItem=com.metainf.jira.plugin:glass-project-documentation#/home/issueTypes/10004/transitions");
     }
 
@@ -38,8 +38,7 @@ public class GlassWorkflowTest {
     @CsvFileSource(resources = "/tableData.csv")
     public void tableValidation(int index, String FromStatus, String TransitionName, String ToStatus, String TransitionType, String TransitionScreen, String Conditions, String Validators, String PostFunctions){
         glassPage.clickSkipButton();
-
-        System.out.println(index);
+       System.out.println(index);
         System.out.println(glassPage.returnTable());
         Assertions.assertEquals(FromStatus, glassPage.returnTable().get(index).get(0));
         Assertions.assertEquals(TransitionName, glassPage.returnTable().get(index).get(1));

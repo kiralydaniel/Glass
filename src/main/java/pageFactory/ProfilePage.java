@@ -7,7 +7,7 @@ import java.net.MalformedURLException;
 
 public class ProfilePage extends BasePage {
 
-    public ProfilePage() throws MalformedURLException {
+    public ProfilePage(){
         super();
     }
 

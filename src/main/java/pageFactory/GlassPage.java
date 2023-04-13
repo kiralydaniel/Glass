@@ -20,6 +20,10 @@ public class GlassPage extends BasePage{
 
 //    WebElement table2 = driver.findElement(By.cssSelector("#app-root > div > div > div:nth-child(3) > div:nth-child(4) > div > div > div.transitions-table-holder > div > table"));
 
+    public void waitTable(){
+        wait.until(ExpectedConditions.visibilityOf(table));
+    }
+
     public List<List> returnTable(){
         List<WebElement> rows = table.findElements(By.tagName("tr"));
         List<List> table = new ArrayList<>();

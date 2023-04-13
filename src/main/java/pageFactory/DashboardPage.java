@@ -33,7 +33,7 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//*[@id='dialog-form']/div/div[2]/div[1]/div")
     WebElement issueSummaryErrorMsg;
 
-    public DashboardPage() throws MalformedURLException {
+    public DashboardPage() {
         super();
     }
 

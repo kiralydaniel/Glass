@@ -34,6 +34,8 @@ public class GlassWorkflowTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/tableData.csv")
     public void tableValidation(int index, String FromStatus, String TransitionName, String ToStatus, String TransitionType, String TransitionScreen, String Conditions, String Validators, String PostFunctions){
+        //System.out.println(index);
+        System.out.println(tabel);
         Assertions.assertEquals(FromStatus, tabel.get(index).get(0));
         Assertions.assertEquals(TransitionName, tabel.get(index).get(1));
         Assertions.assertEquals(ToStatus, tabel.get(index).get(2));

@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.util.List;
 
 public class IssuePage extends BasePage {
-    public IssuePage() throws MalformedURLException {
+    public IssuePage() {
         super();
     }
 
